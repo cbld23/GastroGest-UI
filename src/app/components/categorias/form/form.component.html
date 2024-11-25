@@ -1,0 +1,24 @@
+<div class="container">
+    <h2>{{ isEditMode ? 'Editar Categoría' : 'Crear Categoría' }}</h2>
+    <form (ngSubmit)="saveCategoria()">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input
+          id="nombre"
+          type="text"
+          [(ngModel)]="categoria.nombre"
+          name="nombre"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">
+        {{ isEditMode ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="router.navigate(['/categorias'])">
+        Cancelar
+      </button>
+    </form>
+  </div>
+  

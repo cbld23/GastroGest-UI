@@ -1,0 +1,43 @@
+.container {
+  margin: 20px auto;
+  max-width: 900px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    thead {
+      background-color: #f4f4f4;
+    }
+  }
+
+  button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+
+    &.btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    &.btn-warning {
+      background-color: #ffc107;
+      color: black;
+    }
+
+    &.btn-danger {
+      background-color: #dc3545;
+      color: white;
+    }
+  }
+}

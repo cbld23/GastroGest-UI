@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Categorías</h2>
+    <button (click)="goToNewCategory()" class="btn btn-primary mb-3">Nueva Categoría</button>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let categoria of categorias">
+          <td>{{ categoria.nombre }}</td>
+          <td>
+            <button (click)="editCategoria(categoria.id!)" class="btn btn-warning btn-sm">Editar</button>
+            <button (click)="deleteCategoria(categoria.id!)" class="btn btn-danger btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
