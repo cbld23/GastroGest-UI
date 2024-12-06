@@ -1,0 +1,60 @@
+name: CI - Angular 18 Build and Deploy
+
+on:
+  push:
+    branches:
+      - master 
+  pull_request:
+    branches:
+      - master 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+      # 1. Hacer checkout del código del repositorio
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # 2. Configuración de Node.js 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  
+          cache: 'npm' 
+
+      # 3. Instalar las dependencias de Angular
+      - name: Install dependencies
+        run: npm install  
+
+      # 4. Ejecutar las pruebas unitarias
+      - name: Run tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless  
+
+      # 5. Construcción del proyecto Angular
+      - name: Build Angular project
+        run: npm run build --prod  
+
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build  
+
+    steps:
+      # 1. Hacer checkout del código del repositorio 
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      # 2. Configuración de Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: npm install
+
+    
