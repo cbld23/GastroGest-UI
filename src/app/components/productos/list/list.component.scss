@@ -1,11 +1,19 @@
 .container {
   margin: 20px auto;
   max-width: 900px;
+  padding: 0 15px;
+
+  h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
 
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: 1rem;
 
     th,
     td {
@@ -24,6 +32,7 @@
     padding: 5px 10px;
     border: none;
     cursor: pointer;
+    font-size: 0.9rem;
 
     &.btn-primary {
       background-color: #007bff;
@@ -39,5 +48,130 @@
       background-color: #dc3545;
       color: white;
     }
+  }
+
+  .chart-container {
+    width: 300px;
+    height: 300px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    canvas {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  .stock-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+}
+
+/* --- Estilos Responsivos --- */
+
+/* Pantallas medianas  */
+@media (max-width: 991px) {
+  .container {
+    max-width: 100%;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+
+      th,
+      td {
+        padding: 6px;
+      }
+    }
+
+    button {
+      padding: 4px 8px;
+      font-size: 0.85rem;
+    }
+
+    .chart-container {
+      width: 250px;
+      height: 250px;
+    }
+  }
+}
+
+/* Pantallas pequeñas (móviles, menos de 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    table {
+      font-size: 0.8rem;
+
+      th,
+      td {
+        padding: 4px;
+      }
+    }
+
+    button {
+      margin-bottom: 5px;
+      display: block;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      &.btn-warning {
+        padding: 3px 14px;
+        font-size: 0.9rem;
+      }
+    }
+
+    .chart-container {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+/* Pantallas extra pequeñas (menos de 480px) */
+@media (max-width: 480px) {
+  .container {
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    table {
+      th,
+      td {
+        font-size: 0.75rem;
+        padding: 3px;
+      }
+    }
+
+    .chart-container {
+      width: 150px;
+      height: 150px;
+    }
+
+    button {
+      margin-bottom: 5px;
+      display: block;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      &.btn-warning {
+        padding: 3px 14px;
+        font-size: 0.9rem;
+      }
+    }
+
   }
 }

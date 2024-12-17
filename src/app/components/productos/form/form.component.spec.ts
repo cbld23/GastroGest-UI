@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { FormComponent } from './form.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 
 describe('FormComponent', () => {
@@ -11,11 +10,11 @@ describe('FormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        FormComponent, 
-        RouterTestingModule
+        FormComponent,
       ],
       providers: [
         provideHttpClient(),
+        provideRouter([]),
       ],
     }).compileComponents();
 

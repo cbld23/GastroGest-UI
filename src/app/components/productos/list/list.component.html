@@ -1,32 +1,38 @@
 <div class="container">
-    <h2>Lista de Productos</h2>
-    <button (click)="goToCreate()" class="btn btn-primary">Crear Nuevo Producto</button>
-    <table>
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Precio</th>
-          <th>Stock</th>
-          <th>Categoría</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.precio | currency }}</td>
-          <td>{{ producto.stock }}</td>
-          <td>{{ producto.categoria.nombre }}</td>
-          <td>
-            <button (click)="editProducto(producto.id)" class="btn btn-warning">
-              Editar
-            </button>
-            <button (click)="deleteProducto(producto.id)" class="btn btn-danger">
-              Eliminar
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <h2>Stock de productos</h2>
+  <div class="chart-container">
+    <canvas id="stockChart"></canvas>
   </div>
-  
+
+  <button (click)="goToCreate()" class="btn btn-primary">Crear Nuevo Producto</button>
+  <table>
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Categoría</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let producto of productos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.precio | currency:'EUR':'symbol' }}</td>
+      <td>
+        <span
+          class="stock-indicator"
+          [ngStyle]="{ 'background-color': getStockColor(producto.stock) }">
+        </span>
+        {{ producto.stock }}
+      </td>
+      <td>{{ producto.categoria.nombre }}</td>
+      <td>
+        <button (click)="editProducto(producto.id)" class="btn btn-warning">Editar</button>
+        <button (click)="deleteProducto(producto.id)" class="btn btn-danger">Eliminar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

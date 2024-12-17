@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormComponent } from './form.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, withRouterConfig } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { CategoriaService } from '../../../services/categoria.service';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -12,11 +11,11 @@ describe('FormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule,
         FormComponent,
       ],
       providers: [
         provideHttpClient(),
+        provideRouter([], withRouterConfig({ paramsInheritanceStrategy: 'emptyOnly' })),
       ],
     }).compileComponents();
 
