@@ -8,7 +8,7 @@ Git para clonar el repositorio. Docker para ejecutar la base de datos PostgreSQL
 
 Pasos de ejecución
 
-1. Clonar el repositorio a tu máquina local: Ejecutar en una terminal: git clone https://github.com/cbld23/GastroGest.git cd GastroGest
+1.Clonar el repositorio a tu máquina local: Ejecutar en una terminal: git clone https://github.com/cbld23/GastroGest.git cd GastroGest
 
 2.Levantar la base de datos PostgreSQL y la aplicicación Spring Boot usando Docker: ejecutar en una terminal: docker-compose up -d 
 Esto descargará el software necesario para desplegar una base de datos PostgreSQL en un contenedor y una aplicación Java Spring Boot en otro.
@@ -19,7 +19,7 @@ Es posible acceder a la API documentada con Swagger directamente desde el navega
 
 Detener los servicios Detener los contenedores de Docker: ejecutar el siguiente comando: docker-compose down.
 
-5. Para el front con Angular, una vez tengamos clonado el repositorio, 
+5.Para el front con Angular, una vez tengamos clonado el repositorio, 
 
 git clone https://github.com/cbld23/GastroGest.git cd GastroGest-UI
 
