@@ -1,27 +1,32 @@
-# ProductCatalogUi
+Instrucciones para ejecutar la aplicación.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+Este proyecto consiste en una aplicación Java Spring Boot que utiliza una base de datos PostgreSQL alojada en un contenedor Docker. La API está documentada con Swagger para facilitar su uso, en este caso será una aplicación Angular que actuará como frontend. A continuación, se describen los pasos necesarios para levantar la aplicación Angular.
 
-## Development server
+Requisitos previos antes de comenzar, asegúrate de tener instalados los siguientes programas en tu máquina:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Git para clonar el repositorio. Docker para ejecutar la base de datos PostgreSQL. Java 21+ (se recomienda JDK 21) para ejecutar la aplicación Spring Boot. Maven para compilar y empaquetar la aplicación Spring Boot.
 
-## Code scaffolding
+Pasos de ejecución
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1.Clonar el repositorio a tu máquina local: Ejecutar en una terminal: git clone https://github.com/cbld23/GastroGest.git cd GastroGest
 
-## Build
+2.Levantar la base de datos PostgreSQL y la aplicicación Spring Boot usando Docker: ejecutar en una terminal: docker-compose up -d 
+Esto descargará el software necesario para desplegar una base de datos PostgreSQL en un contenedor y una aplicación Java Spring Boot en otro.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Una vez los contenedores estén levantados, los endpoints de la API están accesibles en: http://localhost:8080/api
 
-## Running unit tests
+Es posible acceder a la API documentada con Swagger directamente desde el navegador y realizar llamadas en: http://localhost:8080/swagger-ui.html
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Detener los servicios Detener los contenedores de Docker: ejecutar el siguiente comando: docker-compose down.
 
-## Running end-to-end tests
+5.Para el front con Angular, una vez tengamos clonado el repositorio, 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+git clone https://github.com/cbld23/GastroGest.git cd GastroGest-UI
 
-## Further help
+6.Crearemos la imagen con el siguiente comando, docker build -t angular-docker .
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+7.Ejecutaremos el contenedor Docker utilizando la imagen creada de la aplicación Angular con el siguiente comando.
+
+docker run -p 4201:4200 angular-docker
+
+¡Listo! A continuación, accederemos a la URL http://localhost:4201/ y verificaremos si la aplicación está funcionando dentro del contenedor Docker.
