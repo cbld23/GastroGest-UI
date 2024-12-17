@@ -1,13 +1,30 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from './services/auth.service.ts.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Catálogo de Productos';
+  isAuthenticated: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.checkAuthentication();
+  }
+
+  checkAuthentication(): void {
+    this.isAuthenticated = this.authService.isLoggedIn();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.isAuthenticated = false;
+    this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
+  }
 }
