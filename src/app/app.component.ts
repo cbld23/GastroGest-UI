@@ -17,6 +17,13 @@ export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {
     this.checkAuthentication();
   }
+ /*
+  constructor(private authService: AuthService, private router: Router) {
+    // Escuchar cambios en el estado de autenticación
+    this.authService.getAuthStatus().subscribe((status) => {
+      this.isAuthenticated = status;
+    });
+  }*/
 
   checkAuthentication(): void {
     this.isAuthenticated = this.authService.isLoggedIn();
@@ -27,4 +34,7 @@ export class AppComponent {
     this.isAuthenticated = false;
     this.router.navigate(['/login']); // Redirige al login después de cerrar sesión
   }
+  
 }
+
+

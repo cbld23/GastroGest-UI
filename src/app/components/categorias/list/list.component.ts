@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './list.component.html',
   standalone: true,
   imports: [CommonModule],
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
   categorias: Categoria[] = [];

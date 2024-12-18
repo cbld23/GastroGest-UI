@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   providers: [AuthService],
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   username = '';
@@ -17,11 +18,12 @@ export class LoginComponent {
 
   login(): void {
     this.authService.login(this.username, this.password).subscribe(
-      (response: { token: string }) => { // Definir el tipo de la respuesta
-        console.log('Login successful. Token:', response.token);
+      (response: { token: string }) => { 
+        //console.log('Login successful. Token:', response.token);
         this.authService.saveToken(response.token);
+        
       },
-      (error: any) => { // Puedes usar 'any' para errores si no tienes una estructura definida
+      (error: any) => { 
         console.error('Login failed', error);
       }
     );
