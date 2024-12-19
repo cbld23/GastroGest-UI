@@ -21,7 +21,7 @@ Detener los servicios Detener los contenedores de Docker: ejecutar el siguiente 
 
 5.Para el front con Angular, una vez tengamos clonado el repositorio, 
 
-git clone https://github.com/cbld23/GastroGest.git cd GastroGest-UI
+git clone https://github.com/cbld23/GastroGest-UI.git cd GastroGest-UI
 
 6.Crearemos la imagen con el siguiente comando, docker build -t angular-docker .
 
